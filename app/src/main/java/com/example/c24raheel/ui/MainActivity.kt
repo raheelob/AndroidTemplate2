@@ -12,7 +12,9 @@ import android.view.MenuItem
 import com.example.c24raheel.R
 import com.example.c24raheel.databinding.ActivityMainBinding
 import com.example.c24raheel.misc.LoadingViewDialog
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration

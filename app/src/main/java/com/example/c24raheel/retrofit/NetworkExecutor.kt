@@ -8,9 +8,11 @@ import retrofit2.HttpException
 
 abstract class NetworkExecutor<in P, out R>() {
 
-    abstract fun runUseCase(parameters: P?): Flow<RemoteData<R>>
+    /*suspend fun runUseCase(parameters: P?): Flow<RemoteData<R>> {}*/
 
-    fun execute(parameters: P?): Flow<RemoteData<R>> {
+    abstract suspend fun runUseCase(parameter: P?): Flow<RemoteData<R>>
+
+    suspend fun execute(parameters: P?): Flow<RemoteData<R>> {
         return runUseCase(parameters).buffer().catch { e ->
             when (e) {
                 is IOException -> emit(RemoteData.RemoteErrorByNetwork)
